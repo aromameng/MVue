@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{person.name}} -- {{person.age}}</h2>
+    <h3>{{person.fav}}</h3>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>{{person.age}}</li>
+    </ul>
+    <h3>{{msg}}</h3>
+    <div v-text='msg'></div>
+    <div v-text='person.name'></div>
+    <div v-html='htmlStr'></div>
+    <input type="text" v-model = 'msg' />
+    <br />
+    <br />
+    <input type="text" v-model = 'person.name' />
+    <br />
+    <br />
+    <button v-on:click="handleClick">点击</button>
+    <button @click="handleClick">点击2</button>
+  </div>
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script> -->
+  <script src="./Observer.js"></script>
+  <script src="./MVue.js"></script>
+  <script>
+    let vm = new MVue({
+      el: '#app',
+      data: {
+        person: {
+          name: '嘻嘻嘻',
+          age: 25,
+          fav: '西乡'
+        },
+        msg: '学习中...',
+        htmlStr: '<span>hello world!</span>'
+      },
+      methods: {
+        handleClick(){
+          vm.$data.person.name = '222'
+          this.person.age = 34
+          // console.log('-----点击事件------', this)
+        }
+      }
+    })
+  </script>
+</body>
+</html>
